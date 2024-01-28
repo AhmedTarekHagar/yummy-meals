@@ -1,19 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yummy Meals</title>
     <link rel="shortcut icon" href="images/yummy.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    
+
+<body class="bg-main">
+
+    <!-- #region **** navbar ***** -->
+
+    <div class="side-nav d-flex position-fixed">
+        <div class="navbarContent w-75 min-vh-100 bg-main overflow-hidden p-3 position-relative navbarContent-hide">
+            <ul class="list-unstyled d-flex flex-column gap-3 pt-3">
+                <li class="cursor-pointer" onclick="displaySearchInputs()">Search</li>
+                <li class="cursor-pointer" onclick="getAllCategories()">Categories</li>
+                <li class="cursor-pointer" onclick="getAreas()">Area</li>
+                <li class="cursor-pointer" onclick="getIngredients()">Ingredients</li>
+                <li class="cursor-pointer" onclick="contactUs()">Contact Us</li>
+            </ul>
+            <div class="position-absolute bottom-0 p-3">
+                <i class="fa fa-brands fa-facebook"></i>
+                <i class="fa fa-brands fa-twitter"></i>
+                <i class="fa-solid fa-globe"></i>
+                <p>Copyright © 2024 All Rights Reserved.</p>
+            </div>
+        </div>
+
+        <div
+            class="navbarControls p-3 d-flex flex-column justify-content-between w-25 min-vh-100 bg-secondary-custom position-absolute end-0">
+            <img class="w-100" src="images/yummy-2.png">
+            <div id="navbarButton" class="text-center fs-1 cursor-pointer text-main">🍔</div>
+            <div class="text-center">
+                <label class="cursor-pointer" for="darkMode"><i id="darkModeIcon"
+                        class="fa-regular text-main fs-1"></i></label>
+                <input class="d-none" type="checkbox" id="darkMode">
+            </div>
+            <div class="d-flex flex-column align-items-center gap-2">
+                <i class="fa-solid fa-globe text-main"></i>
+                <i class="fa-solid fa-share-nodes text-main"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- #endregion -->
+
+    <!-- #region ***** content ***** -->
+
+    <div class="ps-3 overflow-hidden">
+
+        <div id="searchInputs" class="d-flex justify-content-center mt-3 overflow-hidden position-relative">
+            <input oninput="getMeals(this.value)" class="form-control w-25 me-2 bg-transparent slide-Down"
+                placeholder="search by name" type="text" id="searchByName">
+            <input oninput="getMeals(this.value.slice(0,1))" class="form-control w-25 ms-2 bg-transparent"
+                placeholder="search by first letter" type="text" id="SearchByFirstLetter">
+            <button onclick="closeSearch()" id="closeSearch" type="button" class="btn btn-danger ms-4">X</button>
+        </div>
+        <div class="row pt-4 px-5 ms-5 gx-1 gy-4 z-3 text-main position-relative" id="rowContent">
+
+
+        </div>
+
+    </div>
+
+    <!-- #endregion -->
+
+    <!-- #region loader -->
+
+    <div
+        class="bg-main z-3 position-absolute start-0 end-0 top-0 bottom-0 d-flex justify-content-center align-items-center d-none">
+        <div class="loader"></div>
+    </div>
+
+    <!-- #endregion -->
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>
